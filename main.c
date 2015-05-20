@@ -12,9 +12,9 @@
 #include "pageFunctions.h"
 #include "byutr.h"
 
-bool nFlag = false,pFlag = false,tFlag = false;
-FILE *printFile = NULL;
-int limit = 0;
+bool nFlag = false, pFlag = false, tFlag = false;
+FILE *printFile;
+int limit;
 char command[50];
 int levelCount;
 
@@ -96,7 +96,7 @@ void runSimulation(int argc, char **argv) {
     
     if (pFlag) {
         fflush(printFile);
-        system(command);        //system call will sort the output file by page number
+        system(command);        //system call to sort the output file by page number
     }
     
     int hitPercent = (float)pageTable->hits/(float)addressCount * 100;
@@ -115,3 +115,5 @@ int main(int argc, char **argv) {
     runSimulation(argc, argv);
     return 0;
 }
+
+
