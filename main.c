@@ -115,5 +115,3 @@ int main(int argc, char **argv) {
     runSimulation(argc, argv);
     return 0;
 }
-
-
