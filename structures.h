@@ -20,18 +20,17 @@ typedef struct PAGETABLE {
     int *entryCount;
 } PAGETABLE;
 
-typedef struct LEVEL {
+typedef struct MAP {        //leaf node structre
+    bool isValid;
+    unsigned int frame;
+} MAP;
+
+typedef struct LEVEL {      //interior level structure
     bool isLeafNode;
     struct PAGETABLE *pageTable;
     struct LEVEL **nextLevel;
     struct MAP *map;
     int depth;
 } LEVEL;
-
-typedef struct MAP {
-    bool isValid;
-    unsigned int frame;
-} MAP;
-
 
 #endif
