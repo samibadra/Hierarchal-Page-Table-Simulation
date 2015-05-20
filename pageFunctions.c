@@ -8,7 +8,9 @@
 #include <stdlib.h>
 #include "pageFunctions.h"
 
-
+/* initializes page table, and general info about page table including the bitmask and number of shift bits
+ * for each level in the table, as well as the number of "next level pointers" i.e. entryCount for each level.
+ */
 int initializePageTable(PAGETABLE *pageTable, char **argv, int position) {
     pageTable->shiftArray = calloc(pageTable->levelCount, sizeof(int));
     pageTable->bitmaskArray = calloc(pageTable->levelCount, sizeof(unsigned int));
@@ -36,6 +38,7 @@ int initializePageTable(PAGETABLE *pageTable, char **argv, int position) {
     return bitsUsed;
 }
 
+/* prints general information about the page table */
 void printTableInfo(PAGETABLE *pageTable) {
     int i;
     for (i = 0; i < pageTable->levelCount; i++) {
@@ -51,6 +54,9 @@ unsigned int calcBitmask(int start, int length) {
     return mask;
 }
 
+/* returns the index of a particular level of the page tree (given the bitmask and the number of bits to shit right
+ * i.e. logicalToPage(0x7B93E1A5, 0x0FF00000, 20) would return 0xB9
+ */
 unsigned int logicalToPage(unsigned int logicalAddress, unsigned int bitmask, unsigned int shift) {
     unsigned int page = logicalAddress;
     page &= bitmask;
@@ -58,10 +64,12 @@ unsigned int logicalToPage(unsigned int logicalAddress, unsigned int bitmask, un
     return page;
 }
 
+/* calls pageInsertHelper() on the root node */
 void pageInsert(PAGETABLE *pageTable, unsigned int logicalAddress, unsigned int frame) {
     pageInsertHelper(pageTable->rootNode, logicalAddress, frame);
 }
 
+/* inserts the given logical address into the page table, and creates new levels when needed */
 void pageInsertHelper(LEVEL *level, unsigned int logicalAddress, unsigned int frame) {
     unsigned int index = logicalToPage(logicalAddress, level->pageTable->bitmaskArray[level->depth], level->pageTable->shiftArray[level->depth]);
     
@@ -77,11 +85,12 @@ void pageInsertHelper(LEVEL *level, unsigned int logicalAddress, unsigned int fr
     }
 }
 
-/* pageLookup and pageLookupHelper recursively lookup a page*/
+/* calls pageLookupHelper() on the root node */
 MAP * pageLookup(PAGETABLE *pageTable, unsigned int logicalAddress) {
     return pageLookupHelper(pageTable->rootNode, logicalAddress);
 }
 
+/* searches for a given logical address and returns a pointer to the map struct associated with the address, or NULL if address not found */
 MAP * pageLookupHelper(LEVEL *level, unsigned int logicalAddress) {
     unsigned int index = logicalToPage(logicalAddress, level->pageTable->bitmaskArray[level->depth], level->pageTable->shiftArray[level->depth]);
     if (level->isLeafNode) {        //test if current level is a leaf node
@@ -97,6 +106,7 @@ MAP * pageLookupHelper(LEVEL *level, unsigned int logicalAddress) {
     }
 }
 
+/* allocates space for a new level in the page table */
 LEVEL * createLevel(PAGETABLE *pageTable, LEVEL *level, int depth) {
     level = calloc(1, sizeof(LEVEL));
     level->pageTable = pageTable;
