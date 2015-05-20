@@ -12,16 +12,14 @@
 #include "pageFunctions.h"
 #include "byutr.h"
 
+bool nFlag = false,pFlag = false,tFlag = false;
+FILE *printFile = NULL;
+int limit = 0;
+char command[50];
+int levelCount;
 
-int main(int argc, char **argv) {
-    FILE *traceFile;
-    FILE *printFile = NULL;
-    char command[50];
-    strcpy(command, "sort -k1 -o ");
-    bool nFlag,pFlag,tFlag;
-    nFlag = pFlag = tFlag = false;
-    int limit = 0;
-    int levelCount = argc-2;
+void parseArguments(int argc, char **argv) {
+    levelCount = argc-2;
     int c;
     while((c = getopt(argc, argv, "n:p:t")) != -1) {
         switch(c) {
@@ -36,6 +34,7 @@ int main(int argc, char **argv) {
                     printf("Error opening file!\n");
                     exit(1);
                 }
+                strcpy(command, "sort -k1 -o ");
                 strcat(command, optarg);
                 strcat(command, " ");
                 strcat(command, optarg);
@@ -49,6 +48,10 @@ int main(int argc, char **argv) {
                 break;
         }
     }
+}
+
+void runSimulation(int argc, char **argv) {
+    FILE *traceFile;
     
     /*create the page table and initialize it*/
     PAGETABLE *pageTable = calloc(1, sizeof(PAGETABLE));
@@ -101,12 +104,14 @@ int main(int argc, char **argv) {
     printf("\nAddresses Processed: %lu\n", addressCount);
     printf("Hits: %i (%i percent)\n", pageTable->hits, hitPercent);
     printf("Misses: %i (%i percent)\n", pageTable->misses, missPercent);
-    if (pFlag) {
+    if (pFlag)
         fclose(printFile);
-    }
-    fclose(traceFile);
     
-    return 0;
+    fclose(traceFile);
 }
 
-
+int main(int argc, char **argv) {
+    parseArguments(argc, argv);
+    runSimulation(argc, argv);
+    return 0;
+}
