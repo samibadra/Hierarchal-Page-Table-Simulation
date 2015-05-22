@@ -2,7 +2,7 @@
  Sami Badra
  
  CS 570, Spring 2015
- Assignment #3, Page Tree Simulation
+ Assignment #4, Page Tree Simulation
  FILE: main.c
  
  Copyright (c) 2015 Sami Badra. All rights reserved.
