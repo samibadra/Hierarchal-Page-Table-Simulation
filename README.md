@@ -1,9 +1,9 @@
-Copyright 2015 Sami Badra. All Rights Reserved
-
 Sami Badra  
 CS 570, Spring 2015  
 Assignment #4  
 FILE: README
+
+Copyright 2015 Sami Badra. All Rights Reserved
 
 ##Disclaimer
 The *byu_tracereader.c* and *byutr.h* are public files made available by Brigham Yound University. This code does not belong to me, but I included it for the demonstration purposed of this project. These files are used to simply fetch the memory addresses of a trace file.
