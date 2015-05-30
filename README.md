@@ -1,15 +1,19 @@
 Copyright 2015 Sami Badra. All Rights Reserved
 
-Sami Badra
-
-CS 570, Spring 2015
-
-Assignment #4
-
+Sami Badra  
+CS 570, Spring 2015  
+Assignment #4  
 FILE: README
 
 ##Description
 This project is a simulation of an N-level page tree. The program reads from a file consisting of memory accesses for a single process, constructs the tree, and assigns frame indices to each page. The user shall indicate how many bits are to be used for each of the page table levels, and a user-specified file containing hexadecimal addresses is used to construct the page table.
+
+The *byu_tracereader.c* and *byutr.h* are public files made available by Brigham Yound University. This code does not belong to me, but I included it for the demonstration purposed of this project. These files are used to simply fetch the memory addresses of a trace file.
+
+The file *gcc_integ.tr* is a trace of a GNU C compiler execution. This is a sample trace file that can be used to run the program.
+
+#####Citation:  
+Flanagan, J. K. and Nelson, B. E. (1992). BACH: BYU address collection hardware, the collection of complete traces. In Proc. Intl. Conf. Modeling Tech. & Tools for Comp. Performance Eval., pp. 128-137.
 
 ##Optional arguments
 Argument Types| Description
@@ -25,12 +29,10 @@ Argument Types| Description
 4. type the number of bits for each level (starting at level 0) the amount of numbers provided will determine the level count for the page tree (i.e. entering 4 number will create 4 level page tree)
 
 ##Sample Invocations
-`pagetable -t tracefile 8 12`
-
+`pagetable -t tracefile 8 12`  
 This will construct a 2 level page table with 8 bits for level 0, and 12 bits for level 1. It will process ALL of the memory references in 'tracefile', and output each logical to physical address to stdout)
 
-`pagetable –n 1000000 –p page.txt trace_file 8 7 4`
-
+`pagetable –n 1000000 –p page.txt trace_file 8 7 4`  
 This will Construct a 3 level page table with 8 bits for level 0, 7 bits for level 1, and 4 bits for level 2. It will only process the first 1 million memory references, and write the mappings of valid pages to file page.txt)
 
 
