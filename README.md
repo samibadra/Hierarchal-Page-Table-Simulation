@@ -12,7 +12,7 @@ The *byu_tracereader.c* and *byutr.h* are public files made available by Brigham
 
 The file *gcc_integ.tr* is a trace of a GNU C compiler execution. This is a sample trace file that can be used to run the program.
 
-#####Citation:  
+#####Citation:
 Flanagan, J. K. and Nelson, B. E. (1992). BACH: BYU address collection hardware, the collection of complete traces. In Proc. Intl. Conf. Modeling Tech. & Tools for Comp. Performance Eval., pp. 128-137.
 
 ##Optional arguments
