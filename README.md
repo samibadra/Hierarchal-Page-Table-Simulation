@@ -1,6 +1,5 @@
 Copyright 2015 Sami Badra. All Rights Reserved
 
-
 Sami Badra
 
 CS 570, Spring 2015
@@ -13,11 +12,11 @@ FILE: README
 This project is a simulation of an N-level page tree. The program reads from a file consisting of memory accesses for a single process, constructs the tree, and assigns frame indices to each page. The user shall indicate how many bits are to be used for each of the page table levels, and a user-specified file containing hexadecimal addresses is used to construct the page table.
 
 ##Optional arguments
--n N           Sets a limit to only process the first N memory references.
--p <filename>  Prints to the specified file, each page# and corresponding frame#, sorted in order by page number.
--t             Show the logical to physical address translation for each memory reference.
-
-————————————————————————————————————————————————————————————————————————————————
+Argument Types| Description
+--------------| -------------
+-n N          | Sets a limit to only process the first N memory references.
+-p [filename] | Prints to the specified file, each page# and corresponding frame#, sorted in order by page number.
+-t            | Show the logical to physical address translation for each memory reference.
 
 ##Operating Instructions
 1. Compile all of the files, using the Makefile (run the command 'make' while in the directory conaining the files.
@@ -26,11 +25,13 @@ This project is a simulation of an N-level page tree. The program reads from a f
 4. type the number of bits for each level (starting at level 0) the amount of numbers provided will determine the level count for the page tree (i.e. entering 4 number will create 4 level page tree)
 
 ##Sample Invocations
-pagetable -t trace_file 8 12
-(This will construct a 2 level page table with 8 bits for level 0, and 12 bits for level 1. It will process ALL of the memory references in 'trace_file', and output each logical to physical address to stdout)
+`pagetable -t tracefile 8 12`
 
-pagetable –n 1000000 –p page.txt trace_file 8 7 4
-(This will Construct a 3 level page table with 8 bits for level 0, 7 bits for level 1, and 4 bits for level 2. It will only process the first 1 million memory references, and write the mappings of valid pages to file page.txt)
+This will construct a 2 level page table with 8 bits for level 0, and 12 bits for level 1. It will process ALL of the memory references in 'tracefile', and output each logical to physical address to stdout)
+
+`pagetable –n 1000000 –p page.txt trace_file 8 7 4`
+
+This will Construct a 3 level page table with 8 bits for level 0, 7 bits for level 1, and 4 bits for level 2. It will only process the first 1 million memory references, and write the mappings of valid pages to file page.txt)
 
 
 ##Lessons Learned
