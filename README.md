@@ -2,8 +2,11 @@ Copyright 2015 Sami Badra. All Rights Reserved
 
 
 Sami Badra
+
 CS 570, Spring 2015
+
 Assignment #4
+
 FILE: README
 
 ##Description
