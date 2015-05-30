@@ -30,8 +30,8 @@ Argument Types| Description
 4. type the number of bits for each level (starting at level 0) the amount of numbers provided will determine the level count for the page tree (i.e. entering 4 number will create 4 level page tree)
 
 ##Sample Invocations
-`pagetable -t tracefile 8 12`  
-This will construct a 2 level page table with 8 bits for level 0, and 12 bits for level 1. It will process ALL of the memory references in 'tracefile', and output each logical to physical address to stdout)
+`pagetable -t trace_file 8 12`  
+This will construct a 2 level page table with 8 bits for level 0, and 12 bits for level 1. It will process ALL of the memory references in 'trace_file', and output each logical to physical address to stdout)
 
 `pagetable –n 1000000 –p page.txt trace_file 8 7 4`  
 This will Construct a 3 level page table with 8 bits for level 0, 7 bits for level 1, and 4 bits for level 2. It will only process the first 1 million memory references, and write the mappings of valid pages to file page.txt)
