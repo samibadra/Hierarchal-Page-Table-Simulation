@@ -8,13 +8,14 @@ FILE: README
 ##Disclaimer
 The *byu_tracereader.c* and *byutr.h* are public files made available by Brigham Yound University. This code does not belong to me, but I included it for the demonstration purposed of this project. These files are used to simply fetch the memory addresses of a trace file.
 
-The file *gcc_integ.tr* is a trace of a GNU C compiler execution. This is a sample trace file that can be used to run the program.
-
 **Citation:**  
 Flanagan, J. K. and Nelson, B. E. (1992). BACH: BYU address collection hardware, the collection of complete traces. In Proc. Intl. Conf. Modeling Tech. & Tools for Comp. Performance Eval., pp. 128-137.
 
 ##Description
 This project is a simulation of an N-level page tree. The program reads from a file consisting of memory accesses for a single process, constructs the tree, and assigns frame indices to each page. The user shall indicate how many bits are to be used for each of the page table levels, and a user-specified file containing hexadecimal addresses is used to construct the page table.
+
+**Important:** A trace file is required to run this program. I have a sample trace file of the GNU C compiler execution. However the file is too large to put on GitHub, so I provided a link to my DropBox where you can download the *"gcc_integ.tr"* trace file:  
+https://www.dropbox.com/s/ck9ku7oppy88eje/gcc_integ.tr?dl=0
 
 ##Optional arguments
 Argument Types| Description
